@@ -8,4 +8,4 @@ const postFilter = ({ data }: CollectionEntry<"blog">) => {
   return !data.draft && (import.meta.env.DEV || isPublishTimePassed);
 };
 
-export default postFilter;
+export { postFilter };

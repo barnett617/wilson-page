@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Card from "./Card";
+import { SITE } from "@config";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+  title: "Featured" | "Recent Posts";
+}
+
+const { posts, title } = Astro.props;
+---
+
+{
+  posts.length > 0 && (
+    <>
+      <section id="post">
+        <h2>{title}</h2>
+        <ul>
+          {posts.map(
+            ({ data, slug }, index) =>
+              index < SITE.postPerIndex && (
+                <Card
+                  href={`/posts/${slug}/`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              )
+          )}
+        </ul>
+      </section>
+    </>
+  )
+}
+
+<style>
+  #post {
+    @apply pb-6 pt-6;
+  }
+  #post h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+</style>

@@ -11,4 +11,4 @@ const getPageNumbers = (numberOfPosts: number) => {
   return pageNumbers;
 };
 
-export default getPageNumbers;
+export { getPageNumbers };

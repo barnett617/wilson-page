@@ -1,0 +1,28 @@
+---
+export interface Props {
+  navMenuName?: "posts" | "tags" | "about" | "search";
+  activeNav?: typeof navMenuName;
+}
+const { navMenuName, activeNav } = Astro.props;
+---
+
+<li>
+  <a href=`/${navMenuName}/` class={activeNav === navMenuName ? "active" : ""}>
+    {navMenuName}
+  </a>
+</li>
+
+<style>
+  li {
+    @apply col-span-2 flex items-center justify-center justify-self-start;
+  }
+  li a {
+    @apply w-full text-center font-medium hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1;
+  }
+  a.active {
+    @apply underline decoration-2 underline-offset-4;
+  }
+  a.active svg {
+    @apply fill-skin-accent;
+  }
+</style>

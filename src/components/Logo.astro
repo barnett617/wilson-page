@@ -1,0 +1,24 @@
+---
+import { LOGO_IMAGE, SITE } from "@config";
+import ThemeButton from "./ThemeButton.astro";
+---
+
+<div
+  class="mx-3.5 my-auto flex flex-wrap text-2xl font-semibold leading-[3.5rem]"
+>
+  <a class="block" id="skip-to-content" href="/">
+    {
+      LOGO_IMAGE.enable ? (
+        <img
+          src={`/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
+          alt={SITE.title}
+          width={LOGO_IMAGE.width}
+          height={LOGO_IMAGE.height}
+        />
+      ) : (
+        SITE.title
+      )
+    }
+  </a>
+  {SITE.lightAndDarkMode && <ThemeButton />}
+</div>

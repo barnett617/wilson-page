@@ -1,5 +1,5 @@
 import { SITE } from "@config";
-import getPageNumbers from "./getPageNumbers";
+import { getPageNumbers } from "./getPageNumbers";
 
 interface GetPaginationProps<T> {
   posts: T;
@@ -32,4 +32,4 @@ const getPagination = <T>({
   };
 };
 
-export default getPagination;
+export { getPagination };

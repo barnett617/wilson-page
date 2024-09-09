@@ -1,6 +1,6 @@
 import { slugifyStr } from "./slugify";
 import type { CollectionEntry } from "astro:content";
-import postFilter from "./postFilter";
+import { postFilter } from "./postFilter";
 
 interface Tag {
   tag: string;
@@ -20,4 +20,4 @@ const getUniqueTags = (posts: CollectionEntry<"blog">[]) => {
   return tags;
 };
 
-export default getUniqueTags;
+export { getUniqueTags };

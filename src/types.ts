@@ -13,9 +13,8 @@ export type Site = {
   scheduledPostMargin: number;
 };
 
-export type SocialObjects = {
+export type SocialConfig = {
   name: keyof typeof socialIcons;
-  href: string;
-  active: boolean;
+  href: URL['href'];
   linkTitle: string;
-}[];
+}
