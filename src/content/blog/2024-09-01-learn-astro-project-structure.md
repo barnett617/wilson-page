@@ -1,10 +1,10 @@
 ---
-pubDatetime: 2024-09-01T22:50:00Z
-title: Learn Astro Project Structure
-description: TBD
+pubDatetime: 2024-09-01T22:50:00.000+08:00
+title: About Astro Learning
+description: Some records during setup this blog about using Astro
 draft: false
 tags:
-  - docs
+  - notes
 ---
 
 ## Required things
@@ -20,7 +20,7 @@ tags:
 
 ### Markdown content files
 
-src/contents sub-directory is used for contents. Once [defining collections](https://docs.astro.build/en/guides/content-collections/#defining-collections), markdown file is required to match schema
+src/contents sub-directory is used for contents. Once [defining collections](https://docs.astro.build/en/guides/content-collections/#defining-collections), markdown files are required to match schema
 
 ## Astro Advantages
 
@@ -31,7 +31,11 @@ src/contents sub-directory is used for contents. Once [defining collections](htt
 
 ## Others Things
 
-- Tailwind CSS Using
+- [Tailwind](https://tailwindcss.com/docs/utility-first) Using
+
+[@apply](https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply) is using to extract repeated utility patterns to custom CSS classes which is simply naming a group of styles into a class
+
+> tip: avoid premature abstraction
 
 ## Some tricks
 

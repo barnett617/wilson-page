@@ -9,7 +9,7 @@ export const SITE: Site = {
   title: "Wilson's Blog",
   lightAndDarkMode: true,
   postPerIndex: 4,
-  postPerPage: 3,
+  postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
 
