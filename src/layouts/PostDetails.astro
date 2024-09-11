@@ -8,7 +8,6 @@ import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
 import { SITE } from "@config";
-import BackToTop from "@components/BackToTop.astro";
 import GoBack from "@components/GoBack.astro";
 import Comments from "@components/Comments";
 import PostNavLinks from "@components/PostNavLinks.astro";
@@ -71,18 +70,12 @@ const layoutProps = {
       {tags.map(tag => <Tag tag={slugifyStr(tag)} />)}
     </ul>
 
-    <div
-      class="flex flex-col-reverse items-center justify-between gap-6 sm:flex-row-reverse sm:items-end sm:gap-4"
-    >
-      <BackToTop />
-
-      <ShareLinks />
-    </div>
-
-    <hr class="my-6 border-dashed" />
+    <!-- Share Buttons -->
+    <ShareLinks />
 
     <!-- Previous/Next Post Buttons -->
     <PostNavLinks post={post} posts={posts} />
+
     <!-- Comments -->
     <Comments client:only />
   </main>

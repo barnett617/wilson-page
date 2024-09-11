@@ -1,24 +1,53 @@
 <button
   id="back-to-top"
-  class="focus-outline whitespace-nowrap py-1 hover:opacity-75"
+  class="fixed bottom-[60px] right-[30px] bg-skin-card z-50 h-[42px] w-[42px] rounded-full p-3 leading-[0] hover:opacity-75 invisible"
 >
-  <svg xmlns="http://www.w3.org/2000/svg" class="rotate-90">
-    <path
-      d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-    ></path>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 12 6"
+    fill="currentColor"
+  >
+    <path d="M12 6H0l6-6z"></path>
   </svg>
-  <span>Back to Top</span>
 </button>
 
 <script>
+  const btn = document.getElementById("back-to-top");
+  if (btn) {
+    window.onscroll = function () {
+      if (
+        document.body.scrollTop > 800 ||
+        document.documentElement.scrollTop > 800
+      ) {
+        btn.style.visibility = "visible";
+        btn.style.opacity = "1";
+      } else {
+        btn.style.visibility = "hidden";
+        btn.style.opacity = "0";
+      }
+    };
+    backToTop(btn);
+    document.addEventListener("astro:after-swap", () => backToTop(btn));
+  }
+
   /** Scrolls the document to the top when
    * the "Back to Top" button is clicked. */
-  function backToTop() {
-    document.querySelector("#back-to-top")?.addEventListener("click", () => {
+  function backToTop(btn: HTMLElement) {
+    btn.addEventListener("click", () => {
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     });
   }
-  backToTop();
-  document.addEventListener("astro:after-swap", backToTop);
 </script>
+
+<style>
+  #back-to-top {
+    transition:
+      visibility 0.5s,
+      opacity 0.8s linear;
+  }
+  #back-to-top svg {
+    width: initial;
+    height: initial;
+  }
+</style>

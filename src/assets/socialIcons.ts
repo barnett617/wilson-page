@@ -81,6 +81,15 @@ const socialIcons = {
       <circle cx="15" cy="13" r=".5" fill="currentColor"></circle>
       <path d="M10 17c.667 .333 1.333 .5 2 .5s1.333 -.167 2 -.5"></path>
     </svg>`,
+  Telegram: `<svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon-tabler"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path>
+      </svg>`,
 };
 
 export default socialIcons;
