@@ -11,12 +11,14 @@ import { SITE } from "@config";
 import BackToTop from "@components/BackToTop.astro";
 import GoBack from "@components/GoBack.astro";
 import Comments from "@components/Comments";
+import PostNavLinks from "@components/PostNavLinks.astro";
 
 export interface Props {
   post: CollectionEntry<"blog">;
+  posts: CollectionEntry<"blog">[];
 }
 
-const { post } = Astro.props;
+const { post, posts } = Astro.props;
 
 const {
   title,
@@ -76,6 +78,12 @@ const layoutProps = {
 
       <ShareLinks />
     </div>
+
+    <hr class="my-6 border-dashed" />
+
+    <!-- Previous/Next Post Buttons -->
+    <PostNavLinks post={post} posts={posts} />
+    <!-- Comments -->
     <Comments client:only />
   </main>
   <Footer />
