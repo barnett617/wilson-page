@@ -11,10 +11,15 @@ export type Site = {
   postPerIndex: number;
   postPerPage: number;
   scheduledPostMargin: number;
+  editPost: {
+    url?: URL["href"];
+    text?: string;
+    appendFilePath?: boolean;
+  };
 };
 
 export type SocialConfig = {
   name: keyof typeof socialIcons;
-  href: URL['href'];
+  href: URL["href"];
   linkTitle: string;
-}
+};

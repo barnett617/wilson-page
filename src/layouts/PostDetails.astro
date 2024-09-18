@@ -11,6 +11,7 @@ import { SITE } from "@config";
 import GoBack from "@components/GoBack.astro";
 import Comments from "@components/Comments";
 import PostNavLinks from "@components/PostNavLinks.astro";
+import EditPost from "@components/EditPost.astro";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -28,6 +29,7 @@ const {
   pubDatetime,
   modDatetime,
   tags,
+  editPost,
 } = post.data;
 
 const { Content } = await post.render();
@@ -55,13 +57,17 @@ const layoutProps = {
 
   <GoBack />
   <main id="main-content">
-    <h1 transition:name={slugifyStr(title)} class="post-title">{title}</h1>
-    <Datetime
-      pubDatetime={pubDatetime}
-      modDatetime={modDatetime}
-      size="lg"
-      className="my-2"
-    />
+    <h1 transition:name={slugifyStr(title)} class="text-2xl font-semibold text-skin-accent">{title}</h1>
+    <div class="flex items-center">
+      <Datetime
+        pubDatetime={pubDatetime}
+        modDatetime={modDatetime}
+        size="lg"
+        className="my-2"
+      />
+      <EditPost editPost={editPost} postId={post.id} />
+    </div>
+
     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
@@ -85,9 +91,6 @@ const layoutProps = {
 <style>
   main {
     @apply mx-auto w-full max-w-3xl px-4 pb-12;
-  }
-  .post-title {
-    @apply text-2xl font-semibold text-skin-accent;
   }
 </style>
 

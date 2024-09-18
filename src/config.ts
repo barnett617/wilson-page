@@ -11,12 +11,16 @@ export const SITE: Site = {
   postPerIndex: 4,
   postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
+  editPost: {
+    url: "https://github.com/barnett617/wilsonpage/blob/main/src/content/blog",
+    text: "Suggest Changes",
+    appendFilePath: true,
+  },
 };
 
 export const HOME_INFO = {
   title: "Hi there 👋",
-  content:
-    `
+  content: `
       Welcome to Wilson's Blog
       <br>
       I write blogs and keep notes here

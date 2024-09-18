@@ -1,0 +1,29 @@
+---
+import { SITE } from "@config";
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  editPost: CollectionEntry<"blog">["data"]["editPost"];
+  postId: CollectionEntry<"blog">["id"];
+  showDividingLine?: boolean;
+}
+
+const { editPost, postId, showDividingLine = true } = Astro.props;
+
+let editPostLink = editPost?.url ?? SITE.editPost.url;
+const showEditPost = editPostLink && !editPost?.disabled;
+if (editPost?.appendFilePath ?? SITE.editPost.appendFilePath ?? false) {
+  editPostLink += `/${postId}`;
+}
+---
+
+{
+  showEditPost && (
+    <div>
+      {showDividingLine && <span>&nbsp;|&nbsp;</span>}
+      <a class=" hover:opacity-75" href={editPostLink} rel="noopener noreferrer" target="_blank">
+        {editPost?.text ?? SITE.editPost.text ?? "Edit"}
+      </a>
+    </div>
+  )
+}
