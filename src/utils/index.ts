@@ -1,6 +1,4 @@
 export * from "./generateOgImages";
-export * from "./getPageNumbers";
-export * from "./getPagination";
 export * from "./getPostsByTag";
 export * from "./getSortedPosts";
 export * from "./getUniqueTags";

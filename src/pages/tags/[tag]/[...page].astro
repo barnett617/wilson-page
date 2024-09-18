@@ -1,13 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-import TagPosts from "@layouts/TagPosts.astro";
-import { getUniqueTags, getPostsByTag } from "@utils";
-import type { GetStaticPathsOptions } from "astro";
 import { SITE } from "@config";
-
+import TagPosts from "@layouts/TagPosts.astro";
+import { getPostsByTag, getUniqueTags } from "@utils";
+import type { GetStaticPathsOptions } from "astro";
+import { getCollection } from "astro:content";
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = await getCollection("blog");
-
   const tags = getUniqueTags(posts);
 
   return tags.flatMap(({ tag, tagName }) => {

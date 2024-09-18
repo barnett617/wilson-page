@@ -1,19 +1,22 @@
 ---
+import type { Page } from "astro";
 import LinkButton from "./LinkButton.astro";
+import type { CollectionEntry } from "astro:content";
 
 export interface Props {
-  currentPage: number;
-  totalPages: number;
-  prevUrl: string;
-  nextUrl: string;
+  page: Page<CollectionEntry<"blog">>;
 }
 
-const { currentPage, totalPages, prevUrl, nextUrl } = Astro.props;
+const {
+  page: {
+    url: { prev: prevUrl, next: nextUrl },
+    lastPage: totalPages,
+    currentPage,
+  },
+} = Astro.props;
 
-const prev = currentPage > 1 ? "" : "disabled";
-const next = currentPage < totalPages ? "" : "disabled";
-const isPrevDisabled = prev === "disabled";
-const isNextDisabled = next === "disabled";
+const isPrevDisabled = !prevUrl;
+const isNextDisabled = !nextUrl;
 ---
 
 {
@@ -21,8 +24,8 @@ const isNextDisabled = next === "disabled";
     <nav class="pagination-wrapper" aria-label="Pagination">
       <LinkButton
         disabled={isPrevDisabled}
-        href={prevUrl}
-        className={`mr-4 select-none ${prev}`}
+        href={prevUrl ?? ""}
+        className={`mr-4 select-none ${isPrevDisabled ? "disabled" : ""}`}
         ariaLabel="Previous"
       >
         <svg
@@ -36,8 +39,8 @@ const isNextDisabled = next === "disabled";
       {currentPage} / {totalPages}
       <LinkButton
         disabled={isNextDisabled}
-        href={nextUrl}
-        className={`ml-4 select-none ${next}`}
+        href={nextUrl ?? ""}
+        className={`ml-4 select-none ${!nextUrl ? "disabled" : ""}`}
         ariaLabel="Next"
       >
         Next
