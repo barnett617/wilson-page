@@ -14,8 +14,8 @@ const { posts, title } = Astro.props;
 {
   posts.length > 0 && (
     <>
-      <section id="post">
-        <h2>{title}</h2>
+      <section id="post" class="pb-6 pt-6">
+        <h2 class="text-2xl font-semibold tracking-wide">{title}</h2>
         <ul>
           {posts.map(
             ({ data, slug }, index) =>
@@ -32,12 +32,3 @@ const { posts, title } = Astro.props;
     </>
   )
 }
-
-<style>
-  #post {
-    @apply pb-6 pt-6;
-  }
-  #post h2 {
-    @apply text-2xl font-semibold tracking-wide;
-  }
-</style>

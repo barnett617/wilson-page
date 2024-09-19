@@ -2,6 +2,7 @@
 pubDatetime: 2024-07-17T09:56:00.000+08:00
 title: Programmer Learning Methods
 featured: true
+draft: false
 tags: 
   - thinking
 description: Some methods came to my mind during learning new things
@@ -10,6 +11,8 @@ description: Some methods came to my mind during learning new things
 There are many learning methods, such as learning by teaching, Learning by making or learning by deeply using etc.
 
 One should be flexible to use correct way to learn something in specific situation.
+
+## Table of Contents
 
 ## Learning by Using and Learning by Debugging
 

@@ -21,7 +21,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     <Hero />
     <PostList posts={featuredPosts} title="Featured" />
     <PostList posts={recentPosts} title="Recent Posts" />
-    <div class="all-posts-btn-wrapper">
+    <div class="my-8 text-center">
       <LinkButton href="/posts/">
         All Posts
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -35,9 +35,3 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
   <Footer />
 </Layout>
-
-<style>
-  .all-posts-btn-wrapper {
-    @apply my-8 text-center;
-  }
-</style>

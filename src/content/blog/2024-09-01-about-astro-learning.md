@@ -1,5 +1,6 @@
 ---
 pubDatetime: 2024-09-01T22:50:00.000+08:00
+modDatetime: 2024-09-20T00:08:00.000+08:00
 title: About Astro Learning
 description: Some records during setup this blog about using Astro
 draft: false
@@ -40,6 +41,10 @@ src/contents sub-directory is used for contents. Once [defining collections](htt
 ## Some tricks
 
 If there has some logic in script depending styles, than the `<script>` need to be placed after the `<style>` part, otherwise, the logic in script cannot manipulate the styles
+
+### TSX with Astro components
+
+Once you create a tsx component, it cannot use astro components as sub-components bacause it cannot match astro components' props
 
 ## TODO
 

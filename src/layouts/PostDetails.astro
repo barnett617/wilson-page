@@ -12,6 +12,7 @@ import GoBack from "@components/GoBack.astro";
 import Comments from "@components/Comments";
 import PostNavLinks from "@components/PostNavLinks.astro";
 import EditPost from "@components/EditPost.astro";
+import Badge from "@components/Badge";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -30,6 +31,8 @@ const {
   modDatetime,
   tags,
   editPost,
+  draft,
+  featured,
 } = post.data;
 
 const { Content } = await post.render();
@@ -57,7 +60,14 @@ const layoutProps = {
 
   <GoBack />
   <main id="main-content">
-    <h1 transition:name={slugifyStr(title)} class="text-2xl font-semibold text-skin-accent">{title}</h1>
+    <h1
+      transition:name={slugifyStr(title)}
+      class="text-2xl font-semibold text-skin-accent"
+    >
+      {title}
+      {draft && <Badge name="draft" noIndent />}
+      {featured && <Badge name="featured" noIndent />}
+    </h1>
     <div class="flex items-center">
       <Datetime
         pubDatetime={pubDatetime}
