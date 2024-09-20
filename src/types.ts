@@ -23,3 +23,5 @@ export type SocialConfig = {
   href: URL["href"];
   linkTitle: string;
 };
+
+export type Menu = "posts" | "archives" | "tags" | "about" | "search";

@@ -1,0 +1,78 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Pagination from "@components/Pagination.astro";
+import Card from "@components/Card";
+import { SITE } from "@config";
+import type { Page } from "astro";
+import { groupBy } from "@utils";
+import { getSortedPosts } from "@utils";
+
+export interface Props {
+  page: Page<CollectionEntry<"blog">>;
+}
+
+const { page } = Astro.props;
+
+const Month: Record<number, string> = {
+  1: "January",
+  2: "February",
+  3: "March",
+  4: "April",
+  5: "May",
+  6: "June",
+  7: "July",
+  8: "August",
+  9: "September",
+  10: "October",
+  11: "November",
+  12: "December",
+};
+
+const posts = getSortedPosts(page.data);
+---
+
+<Layout title={`Archives | ${SITE.title}`}>
+  <Header activeNav="archives" />
+  <Main pageTitle="Archives">
+    {
+      Object.entries(
+        groupBy(posts, post => post.data.pubDatetime.getFullYear())
+      )
+        .sort(([yearA], [yearB]) => parseInt(yearB) - parseInt(yearA))
+        .map(([year, yearGroup]) => (
+          <div class="my-10">
+            <span class="text-2xl font-bold">{year}</span>
+            <sup class="text-sm">{yearGroup.length}</sup>
+            {Object.entries(
+              groupBy(yearGroup, post => post.data.pubDatetime.getMonth() + 1)
+            )
+              .sort(([monthA], [monthB]) => parseInt(monthB) - parseInt(monthA))
+              .map(([month, monthGroup]) => (
+                <div class="flex">
+                  <div class="my-6 w-36 text-lg">
+                    <span class="font-bold">{Month[Number(month)]}</span>
+                    <sup class="text-xs">{monthGroup.length}</sup>
+                  </div>
+                  <ul>
+                    {monthGroup.map(post => (
+                      <Card
+                        href={`/posts/${post.slug}`}
+                        frontmatter={post.data}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              ))}
+          </div>
+        ))
+    }
+  </Main>
+
+  <Pagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>

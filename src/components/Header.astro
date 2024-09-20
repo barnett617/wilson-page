@@ -1,16 +1,19 @@
 ---
+import type { Menu } from "@types";
 import Logo from "./Logo.astro";
 import Navbar from "./Navbar.astro";
 
 export interface Props {
-  activeNav?: "posts" | "tags" | "about" | "search";
+  activeNav?: Menu;
 }
 
 const { activeNav } = Astro.props;
 ---
 
 <header>
-  <nav class="flex flex-wrap justify-between leading-[3.5rem] max-w-4xl ms-auto me-auto">
+  <nav
+    class="me-auto ms-auto flex max-w-4xl flex-wrap justify-between leading-[3.5rem]"
+  >
     <Logo />
     <Navbar activeNav={activeNav} />
   </nav>

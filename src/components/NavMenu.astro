@@ -1,6 +1,8 @@
 ---
+import type { Menu } from "@types";
+
 export interface Props {
-  navMenuName?: "posts" | "tags" | "about" | "search";
+  navMenuName?: Menu;
   activeNav?: typeof navMenuName;
 }
 const { navMenuName, activeNav } = Astro.props;

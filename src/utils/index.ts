@@ -5,3 +5,4 @@ export * from "./getUniqueTags";
 export * from "./loadGoogleFont";
 export * from "./postFilter";
 export * from "./slugify";
+export { groupBy } from './groupBy';
