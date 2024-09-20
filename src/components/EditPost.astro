@@ -21,7 +21,12 @@ if (editPost?.appendFilePath ?? SITE.editPost.appendFilePath ?? false) {
   showEditPost && (
     <div>
       {showDividingLine && <span>&nbsp;|&nbsp;</span>}
-      <a class=" hover:opacity-75" href={editPostLink} rel="noopener noreferrer" target="_blank">
+      <a
+        class="hover:opacity-75"
+        href={editPostLink}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         {editPost?.text ?? SITE.editPost.text ?? "Edit"}
       </a>
     </div>

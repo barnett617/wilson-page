@@ -12,7 +12,7 @@ export const SITE: Site = {
   postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   editPost: {
-    url: "https://github.com/barnett617/wilsonpage/blob/main/src/content/blog",
+    url: "https://github.com/barnett617/wilsonpage/edit/main/src/content/blog",
     text: "Suggest Changes",
     appendFilePath: true,
   },
