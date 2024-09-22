@@ -1,21 +1,12 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import Card from "@components/Card";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import { SITE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Pagination from "@components/Pagination.astro";
-import Card from "@components/Card";
-import { SITE } from "@config";
-import type { Page } from "astro";
 import { groupBy } from "@utils";
-import { getSortedPosts } from "@utils";
-
-export interface Props {
-  page: Page<CollectionEntry<"blog">>;
-}
-
-const { page } = Astro.props;
+import { getCollection } from "astro:content";
 
 const Month: Record<number, string> = {
   1: "January",
@@ -32,7 +23,7 @@ const Month: Record<number, string> = {
   12: "December",
 };
 
-const posts = getSortedPosts(page.data);
+const posts = await getCollection("blog");
 ---
 
 <Layout title={`Archives | ${SITE.title}`}>
@@ -52,8 +43,8 @@ const posts = getSortedPosts(page.data);
             )
               .sort(([monthA], [monthB]) => parseInt(monthB) - parseInt(monthA))
               .map(([month, monthGroup]) => (
-                <div class="flex">
-                  <div class="my-6 w-36 text-lg">
+                <div class="flex flex-col sm:flex-row">
+                  <div class="mt-6 w-36 text-lg sm:my-6">
                     <span class="font-bold">{Month[Number(month)]}</span>
                     <sup class="text-xs">{monthGroup.length}</sup>
                   </div>
@@ -72,7 +63,5 @@ const posts = getSortedPosts(page.data);
     }
   </Main>
 
-  <Pagination {page} />
-
-  <Footer noMarginTop={page.lastPage > 1} />
+  <Footer />
 </Layout>
